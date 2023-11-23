@@ -45,9 +45,9 @@ public class Main {
 
 		
 		System.out.printf("\n");
-		System.out.printf("  \t%s "+"\033[0m\n","\033[1;102m" 
+		System.out.printf("  \t%10s "+"\033[0m\n","\033[1;102m" 
 				+  "Typeof:" + format + datatype);
-		System.out.printf("  \t" + "%s",
+		System.out.printf("  \t" + "%15s",
 				"\033[1;33;44m"+"   Tamaños:   "+"\033[0m"+ "\n");
 		System.out.printf("  \t" + "\033[1;103m"+"%s","\033[1;33m"+"  min:"+"\033[0m"+ " " + min_value + "\n");
 		System.out.printf("  \t" + "\033[1;41m"+"%s","\033[1;33m"+"  max:"+"\033[0m"+ " " + max_value + "\n");

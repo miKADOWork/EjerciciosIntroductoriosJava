@@ -28,13 +28,13 @@ import javax.imageio.ImageIO;
 
 import java.awt.Dimension; // usado para fijar tamaño de los botones
 
-public class Window extends JFrame{
+public class Window2 extends JFrame{
 	
 	private static final long serialVersionUID = 1L;
 	
 	int contTirada =0;
 	
-	public Window(){
+	public Window2(){
 		// añadimos el margin
 	
 		setTitle("Juego de Undir la Flota");
@@ -64,6 +64,7 @@ public class Window extends JFrame{
 		GridLayout gridCentral = new GridLayout(numFilas+1, numColumnas, gapVertical,gapHorizontal); 
 		GridLayout gridSuperior = new GridLayout(2, 0, gapVertical,gapHorizontal);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+		
 		
 		
 		// Cremos un JLabel un JPanel y un espacio para ver la terminal
@@ -109,6 +110,10 @@ public class Window extends JFrame{
 			panelCentral.add(posicionesX[i]);
 			for (int j=0; j<numColumnas;j++) {
 				JButton boton_aux = new JButton();
+				
+				
+
+
 
 				boton_aux.setPreferredSize(new Dimension(30, 30));
 				panelCentral.add(boton_aux);
@@ -137,24 +142,16 @@ public class Window extends JFrame{
 		                
 		                // Cambiamos la imagen en el botón actual
 		                try {
-//
-//		                    // Crear un nuevo ImageIcon con la imagen escalada
-//		                    ImageIcon imagenEscaladaIcon = new ImageIcon(imagenEscalada);
-		                    Image icono = ImageIO.read(Main.class.getResource("fallo.jpeg"));
+		                    Image icono = ImageIO.read(Main.class.getResource("tocado.jpg"));
 		                    tablero[x][y].setIcon(new ImageIcon(icono));
 		                } catch (IOException ex) {
 		                    ex.printStackTrace();
 		                }
-		                
-		                tablero[x][y].setEnabled(false);
+
 		                // Cerramos el juego si hemos jugado todos las tiradas
 		                if (contTirada == numFilas * numColumnas) {
 		                    textArea.append("El juego se ha terminado, felicidades\n");
-		                    
-		                    // añadir un  alert de que se ha acabado el juego
-		                    JOptionPane.showMessageDialog(null,"Te lo has pasado", "Felicidades:", 3);
 		                }
-		                
 		            }
 		        });
 
