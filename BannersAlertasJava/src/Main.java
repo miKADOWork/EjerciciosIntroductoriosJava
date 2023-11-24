@@ -1,9 +1,13 @@
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane ;
 
 public class Main {
 
 	public static void main(String[] args) {
 		String value_input;
+		
 		// Muestra el mensaje del precio con IVA
 		JOptionPane.showMessageDialog(null, "El total es:\n\t120 EUR (sin IVA)\n\t133 EUR (con IVA)", "Factura",3);
 		value_input = JOptionPane.showInputDialog("Como te llamas?");
@@ -64,14 +68,42 @@ public class Main {
 			}
 		}
 		
+		
 		// Apartado 3 
 		String[] listaAnimales = {"Lobo","Perro", "Gato", "Caballo", "Pez Globo"};
-
+		
 	    String eligeAnimal = (String) JOptionPane.showInputDialog(null,
 	        "Que animal te gusta mas", "Elige el animal que prefieras", JOptionPane.QUESTION_MESSAGE, null, 
 	        listaAnimales,  /* lista de valores*/ listaAnimales[3]); // valor por defecto
 
-	    JOptionPane.showMessageDialog(null,"El animal favorito es:\n\t"+eligeAnimal, "Animales",2);
+	    
+	    // Vemos que animal hemos elegido
+	    String route ="";
+	    switch (eligeAnimal) {
+	    case "Lobo":
+	    	route = "src/perro.jpeg";
+	    	break;
+        case "Perro":
+        	route = "src/perro.png";
+            break;
+        case "Gato":
+        	route = "src/gato.jpg";
+            break;
+        case "Caballo":
+        	route = "src/caballo.jpeg";
+            break;
+        case "Pez Globo":
+        	route = "src/pezGlobo.jpeg";
+            break;
+        default:
+            System.out.println("Animal no reconocido");
+    }
+	    
+	    ImageIcon animalFoto = new ImageIcon(route);
+	    Image img = animalFoto.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+	    
+	    
+	JOptionPane.showMessageDialog(null,"El animal favorito es:\n\t"+eligeAnimal, "Animales",2,new ImageIcon(img));
 	    
 	    // Apartado 4
 	    Object[] options = {"Preferido", "No Preferido","Pizza"};

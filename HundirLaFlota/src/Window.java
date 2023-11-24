@@ -181,7 +181,6 @@ public class Window extends JFrame{
 		                	JOptionPane.showMessageDialog(null,"Te lo has pasado", "Felicidades:", 3);
 		                	System.exit(0);
 		                }
-		                
 		            }
 		        });
 
@@ -190,8 +189,6 @@ public class Window extends JFrame{
                 if(contTirada == numFilas*numColumnas) {
                 	textArea.append("El juego se ha temrinado, felicidades\n");
                 }
-                
-                
                 
                 
 				if(j == numColumnas && i==numFilas-1) {
