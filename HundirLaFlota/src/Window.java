@@ -33,9 +33,10 @@ public class Window extends JFrame{
 	private static final long serialVersionUID = 1L;
 	
 	int contTirada =0;
-	int dificultat=0;
+	long dificultat;
+	int contadorAcertados =10;
 	
-	public Window(){
+	public Window(long dificultat){
 		// añadimos la partida
 		Juego partida = new Juego(dificultat);
 		
@@ -153,6 +154,8 @@ public class Window extends JFrame{
 		                		Image icono = ImageIO.read(Main.class.getResource("tocado.jpg"));
 		                		tablero[x][y].setIcon(new ImageIcon(icono));
 		                		texto = "\t\tTocado\n";
+		                		contadorAcertados++;
+		                		System.out.println("num Barcos alcanzados: "+ contadorAcertados +"\nBarcos totales: "+dificultat);
 		                	}
 		                	
 		                	textArea.append(texto);
@@ -168,7 +171,15 @@ public class Window extends JFrame{
 		                    textArea.append("El juego se ha terminado, felicidades\n");
 		                    
 		                    // añadir un  alert de que se ha acabado el juego
-		                    JOptionPane.showMessageDialog(null,"Te lo has pasado", "Felicidades:", 3);
+		                    JOptionPane.showMessageDialog(null,"Se ha acabado la municón", "Felicidades:", 3);
+		                    System.exit(0);
+		                }
+		                
+		                // Miramos si hemos pulsado todos los barcos
+		                if(partida.getContador() == contadorAcertados) {
+		                	textArea.append("El juego se ha temrinado, has undido todos los barcos\n");
+		                	JOptionPane.showMessageDialog(null,"Te lo has pasado", "Felicidades:", 3);
+		                	System.exit(0);
 		                }
 		                
 		            }
@@ -179,6 +190,8 @@ public class Window extends JFrame{
                 if(contTirada == numFilas*numColumnas) {
                 	textArea.append("El juego se ha temrinado, felicidades\n");
                 }
+                
+                
                 
                 
 				if(j == numColumnas && i==numFilas-1) {

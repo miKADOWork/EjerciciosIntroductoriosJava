@@ -4,26 +4,37 @@ public class Juego {
 	int tamanyoTableroX = 5;
 	int tamanyoTableroY = 5;
 	// este codigo quiere ser reutilizado para el buscaminas
-	// true <==> mina // false <==> no mina
+	// true <==> barco/mina // false <==> no barcono mina
 	boolean[][] arrayJuego = new boolean[tamanyoTableroX][tamanyoTableroY];
+	int contador =0;
 	
 	//Necesitaremos una funcion que distribuia de forma aleatoria las minas
-	public Juego(int dificultat) {
+	public Juego(long dificultat) {
 		// cuenta cuantos barcos hemos puesto ya
-		int contador =0;
+		
+		
+		System.out.println(dificultat);
 		for(int i=0;i<tamanyoTableroX; i++) {
 			for(int j=0; j<tamanyoTableroY; j++) {
-				if(Math.round(Math.random()*2)== 1) {
+				// como es equiprovable random, me dara aproximadamente el nivel de dificultat que quiero
+				//if(Math.round(Math.random()*tamanyoTableroY*tamanyoTableroX) < dificultat) {
+				if(Math.round(Math.random()*tamanyoTableroX*tamanyoTableroY) < dificultat) {
 					this.arrayJuego[i][j] = false;	
 				}
 				else {
 					this.arrayJuego[i][j] = true;
+					contador++;
 				}
 				
 			}
 			
 		}
 		
+	}
+	
+	// Devuelve el numero de possiciones con barcos
+	public int getContador() {
+		return this.contador;
 	}
 	
 	

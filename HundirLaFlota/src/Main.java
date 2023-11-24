@@ -28,25 +28,25 @@ public class Main {
 	    	
 	    	
 	    	// creamos la variable dificultat
-	    	int dificultat;
+	    	long dificultat;
 	    	
 	    	switch (eligeDificultat) {
 			case "Fácil": {
 				
 				System.out.println("Dificultat: "+listaDificultades[0]);
-				dificultat = (int) Math.round(0.8*numFilas*numCol);
+				dificultat = Math.round(0.8*numFilas*numCol);
 				break;
 			}
 			case "Medio": {
 							
 				System.out.println("Dificultat: "+listaDificultades[1]);
-				dificultat = (int) Math.round(0.6*numFilas*numCol);
+				dificultat = Math.round(0.6*numFilas*numCol);
 				break;
 			}
 			case "Difícil": {
 				
 				System.out.println("Dificultat: "+listaDificultades[2]);
-				dificultat= (int) Math.round(0.5*numFilas*numCol);
+				dificultat=  Math.round(0.5*numFilas*numCol);
 				break;
 			}
 			default:
@@ -54,10 +54,9 @@ public class Main {
 			}
 	    	
 	    	
-	    	
-	    	Window myScreen = new Window();
+	    	Window myScreen = new Window(dificultat);
 	    	// la dificultat es el numero de barcos que hay que insertar
-	    	myScreen.dificultat = dificultat;
+	    	
 			myScreen.setVisible(true);
 			
 		
