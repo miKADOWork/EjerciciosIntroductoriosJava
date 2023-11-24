@@ -33,13 +33,17 @@ public class Window extends JFrame{
 	private static final long serialVersionUID = 1L;
 	
 	int contTirada =0;
+	int dificultat=0;
 	
 	public Window(){
-		// añadimos el margin
-	
+		// añadimos la partida
+		Juego partida = new Juego(dificultat);
+		
+		// añadimos el margin	
 		setTitle("Juego de Undir la Flota");
 		setSize(400, 900);
 		setResizable(false);
+		
 		int numFilas = 5;
 		int numColumnas =5;
 		int gapVertical =8;
@@ -130,23 +134,35 @@ public class Window extends JFrame{
 		            @Override
 		            public void actionPerformed(ActionEvent e) {
 		                System.out.println("Has pulsado en la posición: (" + x + ", " + y + ")");
-		                textArea.append("\t" + (contTirada + 1) + ". Disparo en la posición: (" + x + ", " + y + ")\n\t\tTocado\n");
+		                textArea.append("\t" + (contTirada + 1) + ". Disparo en la posición: (" + x + ", " + y + ")\n");
 		                
 		                // Incrementamos la tirada actual
 		                contTirada++;
 		                
+		                
 		                // Cambiamos la imagen en el botón actual
 		                try {
-//
-//		                    // Crear un nuevo ImageIcon con la imagen escalada
-//		                    ImageIcon imagenEscaladaIcon = new ImageIcon(imagenEscalada);
-		                    Image icono = ImageIO.read(Main.class.getResource("fallo.jpeg"));
-		                    tablero[x][y].setIcon(new ImageIcon(icono));
+		                	String texto;
+//							// comprovamos si hemos dado en el blanco o no:
+		                	if (partida.arrayJuego[x][y] == false){ // no le hemos dado
+		                		Image icono = ImageIO.read(Main.class.getResource("fallo.jpeg"));
+		                		tablero[x][y].setIcon(new ImageIcon(icono));
+		                		texto = "\t\tFallo\n";
+		                	}
+		                	else { // impacto
+		                		Image icono = ImageIO.read(Main.class.getResource("tocado.jpg"));
+		                		tablero[x][y].setIcon(new ImageIcon(icono));
+		                		texto = "\t\tTocado\n";
+		                	}
+		                	
+		                	textArea.append(texto);
+		                	
 		                } catch (IOException ex) {
 		                    ex.printStackTrace();
 		                }
 		                
 		                tablero[x][y].setEnabled(false);
+		                
 		                // Cerramos el juego si hemos jugado todos las tiradas
 		                if (contTirada == numFilas * numColumnas) {
 		                    textArea.append("El juego se ha terminado, felicidades\n");
@@ -159,13 +175,12 @@ public class Window extends JFrame{
 		        });
 
 		        
-		        
 		        // Cerramos el juego si hemos jugado todos las tiradas
                 if(contTirada == numFilas*numColumnas) {
                 	textArea.append("El juego se ha temrinado, felicidades\n");
                 }
                 
-				
+                
 				if(j == numColumnas && i==numFilas-1) {
 					for(int k=0;k<numFilas;k++) {
 						JLabel possicion = new JLabel(""+(k+1),SwingConstants.CENTER);
@@ -225,5 +240,7 @@ public class Window extends JFrame{
 		setSize(400, 900);
 		
 	}
+	
+	
 
 }
