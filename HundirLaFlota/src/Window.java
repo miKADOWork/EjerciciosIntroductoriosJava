@@ -159,6 +159,9 @@ public class Window extends JFrame{
 		                	}
 		                	
 		                	textArea.append(texto);
+		                	int indice_ultima_linea = textArea.getDocument().getLength(); //retorna el numero de lineas
+		                	textArea.setCaretPosition(indice_ultima_linea); //ubica el cursor al final
+
 		                	
 		                } catch (IOException ex) {
 		                    ex.printStackTrace();

@@ -32,19 +32,16 @@ public class Main {
 	    	
 	    	switch (eligeDificultat) {
 			case "Fácil": {
-				
 				System.out.println("Dificultat: "+listaDificultades[0]);
 				dificultat = Math.round(0.8*numFilas*numCol);
 				break;
 			}
 			case "Medio": {
-							
 				System.out.println("Dificultat: "+listaDificultades[1]);
 				dificultat = Math.round(0.6*numFilas*numCol);
 				break;
 			}
 			case "Difícil": {
-				
 				System.out.println("Dificultat: "+listaDificultades[2]);
 				dificultat=  Math.round(0.5*numFilas*numCol);
 				break;
@@ -58,10 +55,6 @@ public class Main {
 	    	// la dificultat es el numero de barcos que hay que insertar
 	    	
 			myScreen.setVisible(true);
-			
-		
 	}
-	
-	
 
 }
