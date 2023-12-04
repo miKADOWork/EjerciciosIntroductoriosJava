@@ -1,0 +1,106 @@
+{
+	"info": {
+		"_postman_id": "ee0d53b8-1cd2-4929-a5f9-6efcfc524795",
+		"name": "ChuckNorris",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30585426"
+	},
+	"item": [
+		{
+			"name": "random",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.chucknorris.io/jokes/random",
+					"protocol": "https",
+					"host": [
+						"api",
+						"chucknorris",
+						"io"
+					],
+					"path": [
+						"jokes",
+						"random"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "category=career",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.chucknorris.io/jokes/random?category=career",
+					"protocol": "https",
+					"host": [
+						"api",
+						"chucknorris",
+						"io"
+					],
+					"path": [
+						"jokes",
+						"random"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "career"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "query with \"hello\"",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.chucknorris.io/jokes/search?query=hello",
+					"protocol": "https",
+					"host": [
+						"api",
+						"chucknorris",
+						"io"
+					],
+					"path": [
+						"jokes",
+						"search"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "hello"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.chucknorris.io/jokes/categories",
+					"protocol": "https",
+					"host": [
+						"api",
+						"chucknorris",
+						"io"
+					],
+					"path": [
+						"jokes",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,54 @@
+{
+	"info": {
+		"_postman_id": "ab5358b2-8cdd-40fb-9660-31594a35e30b",
+		"name": "PokeAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30585426"
+	},
+	"item": [
+		{
+			"name": "pokemon list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://pokeapi.co/api/v2/pokemon",
+					"protocol": "https",
+					"host": [
+						"pokeapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"v2",
+						"pokemon"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "calling pokemon 2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://pokeapi.co/api/v2/pokemon/2/",
+					"protocol": "https",
+					"host": [
+						"pokeapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"v2",
+						"pokemon",
+						"2",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
