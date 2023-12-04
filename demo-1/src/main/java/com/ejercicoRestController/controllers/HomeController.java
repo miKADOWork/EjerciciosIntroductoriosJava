@@ -1,10 +1,13 @@
 package com.ejercicoRestController.controllers;
 
+import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.server.ResponseStatusException;
@@ -50,6 +53,50 @@ public class HomeController {
             default:
                 throw new IllegalArgumentException("Unexpected value: " + randomNum);
         }
+    }
+    
+    // En un ejercicio nos piden realizar un metodo con dos endpoints 
+    @RequestMapping(value={"/doubleendpointsone","/doubleendpointstwo"})
+    @ResponseBody
+	public String doubleEndpoint(){
+		return "muestra lo mismo en los 2 endpoints";
+	}
+    
+    // Metodo para indtroducir un parametro 
+    @RequestMapping("/wellcome")
+    @ResponseBody
+    public String getPerson(@RequestParam(required=false, defaultValue ="desconocido") String name) {
+		return "Wellcome "+ name;
+	}
+    
+    
+    // Metodo para indtroducir un parametro 
+    @RequestMapping("/ejercicio259")
+    @ResponseBody
+    public ObjectNode getFullName(@RequestParam(required=false, defaultValue ="desconocido") String name, @RequestParam(required=false, defaultValue ="garcia") String surname) {
+    	ObjectMapper mapper = new ObjectMapper();
+        ObjectNode objectNode = mapper.createObjectNode();
+        objectNode.put("name", name);
+        objectNode.put("surname", surname);
+        return objectNode;
+	}
+    
+    
+    @RequestMapping("/ejercicioParamsInfinitos")
+    @ResponseBody
+    public ObjectNode creaJSONMiembros(@RequestParam(required=false, defaultValue ="desconocido") Map<String, String> allParams) {
+
+		ObjectMapper mapper = new ObjectMapper();
+	    ObjectNode objectNode = mapper.createObjectNode();
+	    // Recorrer los valores del mapa usando un bucle for
+	    for (Map.Entry<String, String> entry : allParams.entrySet()) {
+	        String paramName = entry.getKey();
+	        String paramValue = entry.getValue();
+	
+			objectNode.put(paramName,paramValue);
+	    }
+	
+		return objectNode;
     }
 
     @GetMapping("/categories/json")
